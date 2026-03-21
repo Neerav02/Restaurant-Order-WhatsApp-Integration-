@@ -7,76 +7,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --fire:#FF4500;--ember:#FF6B35;--gold:#FFB347;--gold-lt:#FFE0B2;
+  --fire:#FF4500;--ember:#FF6B35;--gold:#FFB347;
   --ink:#0D0500;--ink2:#2C1206;--smoke:#7A5C4F;--cream:#FFF9F5;
-  --card:#FFFFFF;--leaf:#1B7A4A;--leaf-bg:#E8F5EE;
-  --chili:#C0392B;--chili-bg:#FDECEA;--wa:#25D366;
+  --leaf:#1B7A4A;--leaf-bg:#E8F5EE;--chili:#C0392B;--chili-bg:#FDECEA;
+  --wa:#25D366;--upi:#5F259F;--cash:#1B7A4A;
   --border:rgba(255,107,53,.13);--r:18px;--r-sm:12px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);min-height:100vh;overflow-x:hidden}
-
-/* PARTICLE CANVAS */
 #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-/* HERO */
-.hero{
-  position:relative;min-height:100svh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:2rem 1.5rem 5rem;overflow:hidden;z-index:1;
-}
+/* ── HERO ── */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem 5rem;overflow:hidden;z-index:1}
 .orb{position:absolute;border-radius:50%;filter:blur(80px);animation:orb-float 8s ease-in-out infinite;pointer-events:none}
 .orb1{width:420px;height:420px;background:radial-gradient(circle,rgba(255,69,0,.35),transparent 70%);top:-80px;left:-100px}
 .orb2{width:320px;height:320px;background:radial-gradient(circle,rgba(255,179,71,.25),transparent 70%);bottom:100px;right:-60px;animation-delay:-3s}
 .orb3{width:240px;height:240px;background:radial-gradient(circle,rgba(192,57,43,.3),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-5s}
 @keyframes orb-float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-30px) scale(1.05)}66%{transform:translate(-15px,15px) scale(.95)}}
-
 .mandala{position:absolute;width:min(600px,90vw);height:min(600px,90vw);border-radius:50%;border:1px solid rgba(255,179,71,.12);animation:spin-slow 60s linear infinite;pointer-events:none}
 .mandala::before,.mandala::after{content:'';position:absolute;inset:20px;border-radius:50%;border:1px solid rgba(255,107,53,.08)}
 .mandala::after{inset:40px;border-color:rgba(255,69,0,.06);animation:spin-slow 30s linear infinite reverse}
 @keyframes spin-slow{to{transform:rotate(360deg)}}
-
 .floater{position:absolute;animation:float-emoji linear infinite;pointer-events:none;user-select:none;opacity:0}
 @keyframes float-emoji{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:.55}90%{opacity:.35}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}
-
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1.1rem;
-  border:1px solid rgba(255,179,71,.3);border-radius:999px;font-size:.72rem;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
-  background:rgba(255,179,71,.08);backdrop-filter:blur(8px);margin-bottom:1.5rem;
-  animation:hero-in .8s cubic-bezier(.22,1,.36,1) both;
-}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1.1rem;border:1px solid rgba(255,179,71,.3);border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(255,179,71,.08);backdrop-filter:blur(8px);margin-bottom:1.5rem;animation:hero-in .8s cubic-bezier(.22,1,.36,1) both}
 .dot-pulse{width:7px;height:7px;border-radius:50%;background:var(--wa);animation:pulse-dot 2s infinite}
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 0 0 6px rgba(37,211,102,0)}}
-
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,11vw,7rem);font-weight:700;line-height:.95;color:#fff;animation:hero-in .8s .1s cubic-bezier(.22,1,.36,1) both}
 .line-fire{display:block;background:linear-gradient(135deg,var(--fire),var(--gold),var(--ember));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradient-shift 4s ease infinite;background-size:200% 200%}
 @keyframes gradient-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
 .hero-tagline{font-size:clamp(.9rem,2.5vw,1.1rem);color:rgba(255,249,245,.55);font-weight:300;letter-spacing:.04em;margin:1.25rem 0 2.5rem;animation:hero-in .8s .2s cubic-bezier(.22,1,.36,1) both}
-
-.hero-cta{
-  display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2.2rem;border-radius:999px;
-  background:linear-gradient(135deg,var(--fire),var(--ember));color:#fff;font-weight:700;font-size:1rem;
-  border:none;cursor:pointer;
-  box-shadow:0 8px 32px rgba(255,69,0,.4);
-  animation:hero-in .8s .3s cubic-bezier(.22,1,.36,1) both,cta-pulse 3s 1.5s ease-in-out infinite;
-  transition:transform .2s,box-shadow .2s;font-family:'Outfit',sans-serif;
-}
+.hero-cta{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 2.2rem;border-radius:999px;background:linear-gradient(135deg,var(--fire),var(--ember));color:#fff;font-weight:700;font-size:1rem;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(255,69,0,.4);animation:hero-in .8s .3s cubic-bezier(.22,1,.36,1) both,cta-pulse 3s 1.5s ease-in-out infinite;transition:transform .2s,box-shadow .2s;font-family:'Outfit',sans-serif}
 .hero-cta:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 48px rgba(255,69,0,.5)}
 .hero-cta:active{transform:scale(.97)}
 @keyframes cta-pulse{0%,100%{box-shadow:0 8px 32px rgba(255,69,0,.4),0 0 0 0 rgba(255,69,0,.2)}50%{box-shadow:0 8px 40px rgba(255,69,0,.5),0 0 0 14px rgba(255,69,0,0)}}
-
 @keyframes hero-in{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
 .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;animation:hero-in .8s .6s cubic-bezier(.22,1,.36,1) both;opacity:.4}
 .scroll-hint span{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase}
 .scroll-arrow{width:20px;height:30px;border:1.5px solid rgba(255,249,245,.4);border-radius:999px;position:relative}
 .scroll-arrow::after{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:2px;background:var(--gold);animation:scroll-bob 1.5s ease-in-out infinite}
 @keyframes scroll-bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
-/* STATS STRIP */
+/* ── STATS ── */
 .stats-strip{position:relative;z-index:2;display:flex;justify-content:center;background:rgba(255,255,255,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);overflow-x:auto;scrollbar-width:none}
 .stats-strip::-webkit-scrollbar{display:none}
 .stat{flex:1;min-width:100px;padding:1.1rem .75rem;text-align:center;border-right:1px solid var(--border)}
@@ -84,7 +57,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
 .stat-val{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--gold)}
 .stat-label{font-size:.65rem;color:rgba(255,249,245,.4);text-transform:uppercase;letter-spacing:.08em;margin-top:.1rem}
 
-/* CAT NAV */
+/* ── CAT NAV ── */
 .cat-nav{position:sticky;top:0;z-index:100;background:rgba(13,5,0,.88);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border);padding:.75rem 1rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
 .cat-nav::-webkit-scrollbar{display:none}
 .cat-pill{flex-shrink:0;padding:.5rem 1.1rem;border-radius:999px;border:1px solid rgba(255,107,53,.2);background:transparent;color:rgba(255,249,245,.5);font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;position:relative;overflow:hidden}
@@ -94,32 +67,23 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
 .cat-pill.active{border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(255,69,0,.4);transform:translateY(-1px)}
 .cat-pill.active::before{opacity:1}
 
-/* MENU */
+/* ── MENU ── */
 .menu-wrap{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:2rem 1rem 140px}
 .section-header{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.25rem;position:relative}
 .section-header::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
 .section-emoji-bg{width:44px;height:44px;border-radius:14px;background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.2);display:grid;place-items:center;font-size:1.3rem;flex-shrink:0}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;color:#fff}
 .section-count{font-size:.7rem;font-weight:600;color:var(--ember);background:rgba(255,107,53,.12);padding:.2rem .55rem;border-radius:999px;letter-spacing:.04em}
-
-/* GRID */
 .menu-grid{display:grid;grid-template-columns:1fr;gap:1rem}
 @media(min-width:600px){.menu-grid{grid-template-columns:1fr 1fr}}
 @media(min-width:900px){.menu-grid{grid-template-columns:1fr 1fr 1fr}}
 
-/* CARDS */
-.menu-card{
-  background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-  border:1px solid rgba(255,107,53,.12);border-radius:var(--r);overflow:hidden;cursor:pointer;position:relative;
-  transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,border-color .3s;
-  opacity:0;transform:translateY(24px) scale(.97);
-  animation:card-appear .5s cubic-bezier(.22,1,.36,1) forwards;backdrop-filter:blur(4px);
-}
+/* ── MENU CARDS ── */
+.menu-card{background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,107,53,.12);border-radius:var(--r);overflow:hidden;cursor:pointer;position:relative;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,border-color .3s;opacity:0;transform:translateY(24px) scale(.97);animation:card-appear .5s cubic-bezier(.22,1,.36,1) forwards;backdrop-filter:blur(4px)}
 .menu-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,69,0,.06),transparent);opacity:0;transition:opacity .3s;border-radius:var(--r);z-index:0}
 .menu-card:hover{transform:translateY(-6px) scale(1.01);border-color:rgba(255,107,53,.35);box-shadow:0 20px 60px rgba(255,69,0,.15),0 4px 16px rgba(0,0,0,.3)}
 .menu-card:hover::before{opacity:1}
 @keyframes card-appear{to{opacity:1;transform:none}}
-
 .card-img-wrap{overflow:hidden;position:relative}
 .card-img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,1,.36,1);position:relative;z-index:1}
 .menu-card:hover .card-img{transform:scale(1.07)}
@@ -130,38 +94,28 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
 .badge.veg{background:rgba(27,122,74,.85);color:#fff}
 .badge.non{background:rgba(192,57,43,.85);color:#fff}
 .badge.spice{background:rgba(255,69,0,.82);color:#fff}
-
 .card-body{padding:1rem;position:relative;z-index:1}
 .card-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:.3rem}
 .card-desc{font-size:.75rem;color:rgba(255,249,245,.45);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:.8rem}
 .card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
 .card-price{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold)}
 .card-price sup{font-size:.7em;vertical-align:super;font-family:'Outfit',sans-serif;font-weight:600}
-
 .add-btn{display:flex;align-items:center;gap:.3rem;padding:.5rem 1rem;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--fire),var(--ember));color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;box-shadow:0 4px 12px rgba(255,69,0,.35);position:relative;overflow:hidden}
-.add-btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);opacity:0;transition:opacity .15s}
 .add-btn:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(255,69,0,.5)}
-.add-btn:hover::after{opacity:1}
 .add-btn:active{transform:scale(.94)}
-
 .qty-row{display:flex;align-items:center;gap:.6rem}
 .qty-btn{width:32px;height:32px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;font-size:1.1rem;font-weight:700;transition:transform .2s cubic-bezier(.34,1.56,.64,1),background .15s}
 .qty-btn.minus{background:rgba(255,255,255,.1);color:#fff}
 .qty-btn.minus:hover{background:rgba(255,255,255,.18);transform:scale(1.15)}
 .qty-btn.plus{background:linear-gradient(135deg,var(--fire),var(--ember));color:#fff;box-shadow:0 3px 10px rgba(255,69,0,.4)}
-.qty-btn.plus:hover{transform:scale(1.15);box-shadow:0 4px 16px rgba(255,69,0,.6)}
+.qty-btn.plus:hover{transform:scale(1.15)}
 .qty-num{font-weight:700;font-size:1rem;color:#fff;min-width:1.5rem;text-align:center}
+@keyframes ripple-out{0%{transform:scale(.5);opacity:.8}100%{transform:scale(3.5);opacity:0}}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.3);pointer-events:none;animation:ripple-out .6s ease-out forwards}
 
-/* CART BAR */
+/* ── CART BAR ── */
 .cart-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:1rem 1rem 1.25rem;pointer-events:none;background:linear-gradient(to top,rgba(13,5,0,.95) 60%,transparent)}
-.cart-btn{
-  max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
-  background:linear-gradient(135deg,var(--fire) 0%,#FF8C00 100%);color:#fff;border-radius:var(--r);
-  padding:1.1rem 1.4rem;border:none;cursor:pointer;width:100%;
-  box-shadow:0 8px 40px rgba(255,69,0,.5),0 2px 8px rgba(0,0,0,.3);pointer-events:all;
-  transform:translateY(120px);transition:transform .45s cubic-bezier(.34,1.36,.64,1),box-shadow .3s;
-  position:relative;overflow:hidden;font-family:'Outfit',sans-serif;
-}
+.cart-btn{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,var(--fire) 0%,#FF8C00 100%);color:#fff;border-radius:var(--r);padding:1.1rem 1.4rem;border:none;cursor:pointer;width:100%;box-shadow:0 8px 40px rgba(255,69,0,.5),0 2px 8px rgba(0,0,0,.3);pointer-events:all;transform:translateY(120px);transition:transform .45s cubic-bezier(.34,1.36,.64,1),box-shadow .3s;position:relative;overflow:hidden;font-family:'Outfit',sans-serif}
 .cart-btn::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent 0%,rgba(255,255,255,.07) 30%,transparent 60%);animation:spin-slow 6s linear infinite}
 .cart-btn.visible{transform:translateY(0)}
 .cart-btn:hover{box-shadow:0 12px 50px rgba(255,69,0,.65)}
@@ -170,9 +124,11 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
 .cart-label{font-weight:700;font-size:1rem}
 .cart-total{position:relative;z-index:1;font-weight:800;font-size:1.05rem;letter-spacing:.02em}
 
-/* SHEET */
+/* ── OVERLAY ── */
 .overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .3s}
 .overlay.open{opacity:1;pointer-events:all}
+
+/* ── SHEET (cart) ── */
 .sheet{position:fixed;bottom:0;left:0;right:0;z-index:400;background:linear-gradient(180deg,#1A0800 0%,#0D0500 100%);border:1px solid var(--border);border-bottom:none;border-radius:28px 28px 0 0;max-height:88vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .45s cubic-bezier(.34,1.2,.64,1);box-shadow:0 -20px 80px rgba(255,69,0,.1),0 -4px 24px rgba(0,0,0,.4)}
 .sheet.open{transform:none}
 .sheet-drag{width:44px;height:4px;border-radius:2px;background:rgba(255,249,245,.15);margin:14px auto 0;cursor:pointer}
@@ -183,7 +139,6 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
 .sheet-body{overflow-y:auto;flex:1;padding:1rem 1.4rem}
 .sheet-body::-webkit-scrollbar{width:3px}
 .sheet-body::-webkit-scrollbar-thumb{background:rgba(255,107,53,.3);border-radius:2px}
-
 .cart-row{display:flex;align-items:center;gap:.9rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.05);animation:row-in .35s cubic-bezier(.22,1,.36,1) both}
 @keyframes row-in{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
 .cart-row:last-child{border-bottom:none}
@@ -191,39 +146,160 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
 .cart-row-name{font-weight:600;font-size:.9rem;color:#fff}
 .cart-row-sub{font-size:.75rem;color:rgba(255,249,245,.35);margin-top:.15rem}
 .cart-row-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--gold);white-space:nowrap}
-
-.empty-state{text-align:center;padding:3.5rem 1rem;animation:hero-in .5s ease both}
+.empty-state{text-align:center;padding:3.5rem 1rem}
 .empty-icon{font-size:3.5rem;margin-bottom:.75rem;animation:float-icon 3s ease-in-out infinite}
 @keyframes float-icon{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .empty-text{color:rgba(255,249,245,.35);font-size:.88rem}
-
 .sheet-foot{padding:1.2rem 1.4rem;border-top:1px solid var(--border);background:rgba(0,0,0,.3);backdrop-filter:blur(12px)}
-.total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem}
+.total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
 .total-label{font-size:.85rem;color:rgba(255,249,245,.45)}
 .total-val{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:700;color:#fff}
+.proceed-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1.1rem;border-radius:var(--r);border:none;cursor:pointer;background:linear-gradient(135deg,var(--fire),var(--ember));color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;box-shadow:0 8px 32px rgba(255,69,0,.35);transition:transform .2s,box-shadow .2s}
+.proceed-btn:hover{transform:scale(1.02);box-shadow:0 12px 44px rgba(255,69,0,.5)}
 
-/* WA CTA */
+/* ══════════════════════════════════════════════
+   CUSTOMER DETAILS MODAL (step 2)
+══════════════════════════════════════════════ */
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s;display:flex;align-items:flex-end;justify-content:center}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{width:100%;max-width:540px;background:linear-gradient(180deg,#1E0D04 0%,#0D0500 100%);border:1px solid rgba(255,107,53,.2);border-bottom:none;border-radius:28px 28px 0 0;padding:0 0 env(safe-area-inset-bottom);max-height:95vh;overflow-y:auto;transform:translateY(100%);transition:transform .45s cubic-bezier(.34,1.2,.64,1)}
+.modal-overlay.open .modal{transform:none}
+.modal::-webkit-scrollbar{display:none}
+.modal-handle{width:44px;height:4px;border-radius:2px;background:rgba(255,249,245,.15);margin:14px auto 0}
+.modal-header{padding:1.2rem 1.4rem .8rem;border-bottom:1px solid var(--border)}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#fff}
+.modal-sub{font-size:.78rem;color:rgba(255,249,245,.4);margin-top:.2rem}
+.modal-body{padding:1.25rem 1.4rem}
+
+/* Progress steps */
+.progress-steps{display:flex;align-items:center;gap:0;margin-bottom:1.5rem}
+.prog-step{display:flex;align-items:center;gap:.5rem;flex:1}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:700;flex-shrink:0;border:2px solid rgba(255,107,53,.3);color:rgba(255,249,245,.3);transition:all .3s}
+.prog-dot.active{background:var(--fire);border-color:var(--fire);color:#fff;box-shadow:0 0 16px rgba(255,69,0,.4)}
+.prog-dot.done{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.prog-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,249,245,.3);transition:color .3s}
+.prog-label.active{color:var(--gold)}
+.prog-line{height:2px;flex:1;background:rgba(255,107,53,.15);margin:0 .5rem;border-radius:1px;transition:background .4s}
+.prog-line.done{background:var(--leaf)}
+
+/* Form fields */
+.form-section{margin-bottom:1.4rem}
+.form-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,249,245,.4);margin-bottom:.5rem;display:block}
+.form-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,107,53,.2);border-radius:var(--r-sm);padding:.85rem 1rem;color:var(--cream);font-family:'Outfit',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s,background .2s}
+.form-input:focus{border-color:var(--ember);background:rgba(255,107,53,.07)}
+.form-input::placeholder{color:rgba(255,249,245,.2)}
+.form-input.error{border-color:var(--chili);animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+
+/* Pickup time chips */
+.time-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.5rem}
+.time-chip{border:1px solid rgba(255,107,53,.2);border-radius:var(--r-sm);padding:.65rem .5rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.03)}
+.time-chip .chip-time{font-size:.95rem;font-weight:700;color:var(--cream)}
+.time-chip .chip-label{font-size:.65rem;color:rgba(255,249,245,.35);margin-top:.1rem}
+.time-chip.selected{border-color:var(--fire);background:rgba(255,69,0,.12);box-shadow:0 0 16px rgba(255,69,0,.2)}
+.time-chip.selected .chip-time{color:var(--gold)}
+.time-chip.custom-chip input{background:none;border:none;outline:none;width:100%;text-align:center;font-family:'Outfit',sans-serif;font-size:.85rem;color:var(--cream);font-weight:700}
+.time-chip.custom-chip input::placeholder{color:rgba(255,249,245,.3);font-weight:400}
+
+/* Payment options */
+.pay-options{display:flex;flex-direction:column;gap:.65rem;margin-top:.5rem}
+.pay-option{display:flex;align-items:center;gap:.85rem;padding:.9rem 1rem;border-radius:var(--r-sm);border:1px solid rgba(255,107,53,.15);cursor:pointer;transition:all .25s;background:rgba(255,255,255,.03);position:relative;overflow:hidden}
+.pay-option::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .25s}
+.pay-option.upi::before{background:linear-gradient(135deg,rgba(95,37,159,.15),transparent)}
+.pay-option.cash::before{background:linear-gradient(135deg,rgba(27,122,74,.15),transparent)}
+.pay-option.selected{border-color:var(--fire)}
+.pay-option.upi.selected{border-color:var(--upi);box-shadow:0 0 20px rgba(95,37,159,.2)}
+.pay-option.upi.selected::before{opacity:1}
+.pay-option.cash.selected{border-color:var(--cash);box-shadow:0 0 20px rgba(27,122,74,.2)}
+.pay-option.cash.selected::before{opacity:1}
+.pay-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.4rem;flex-shrink:0;position:relative;z-index:1}
+.pay-icon.upi-icon{background:rgba(95,37,159,.25)}
+.pay-icon.cash-icon{background:rgba(27,122,74,.25)}
+.pay-details{flex:1;position:relative;z-index:1}
+.pay-name{font-weight:700;font-size:.95rem;color:var(--cream)}
+.pay-desc{font-size:.72rem;color:rgba(255,249,245,.35);margin-top:.1rem}
+.pay-radio{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,107,53,.3);flex-shrink:0;position:relative;z-index:1;transition:border-color .2s}
+.pay-option.upi.selected .pay-radio{border-color:var(--upi);background:var(--upi)}
+.pay-option.cash.selected .pay-radio{border-color:var(--cash);background:var(--cash)}
+.pay-option.selected .pay-radio::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:#fff}
+
+/* Notes field */
+.notes-field{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,107,53,.15);border-radius:var(--r-sm);padding:.8rem 1rem;color:var(--cream);font-family:'Outfit',sans-serif;font-size:.88rem;outline:none;resize:none;min-height:70px;transition:border-color .2s}
+.notes-field:focus{border-color:var(--ember)}
+.notes-field::placeholder{color:rgba(255,249,245,.2)}
+
+/* Navigation buttons */
+.modal-nav{display:flex;gap:.65rem;margin-top:1.4rem}
+.btn-back{flex:0 0 auto;padding:.9rem 1.2rem;border-radius:var(--r-sm);background:rgba(255,255,255,.07);border:1px solid rgba(255,107,53,.15);color:rgba(255,249,245,.6);font-family:'Outfit',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
+.btn-back:hover{background:rgba(255,255,255,.12)}
+.btn-next{flex:1;padding:.9rem;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--fire),var(--ember));border:none;color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 6px 24px rgba(255,69,0,.35)}
+.btn-next:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(255,69,0,.45)}
+.btn-next:active{transform:scale(.97)}
+
+/* ══════════════════════════════════════════════
+   ORDER SUMMARY STEP (step 3 — review)
+══════════════════════════════════════════════ */
+.order-summary-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,107,53,.15);border-radius:var(--r-sm);padding:1rem;margin-bottom:1rem}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;font-size:.85rem}
+.summary-row:not(:last-child){border-bottom:1px solid rgba(255,255,255,.04)}
+.summary-key{color:rgba(255,249,245,.45)}
+.summary-val{color:var(--cream);font-weight:600;text-align:right}
+.summary-total-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0 .25rem;margin-top:.5rem;border-top:1px solid rgba(255,107,53,.2)}
+.summary-total-key{color:rgba(255,249,245,.6);font-weight:600}
+.summary-total-val{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold)}
+
+.items-summary{max-height:140px;overflow-y:auto;margin-bottom:.75rem}
+.items-summary::-webkit-scrollbar{width:3px}
+.items-summary::-webkit-scrollbar-thumb{background:rgba(255,107,53,.25);border-radius:2px}
+.item-summary-row{display:flex;justify-content:space-between;font-size:.82rem;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.item-summary-row:last-child{border-bottom:none}
+
+/* Payment method badge */
+.pay-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .75rem;border-radius:999px;font-size:.75rem;font-weight:700}
+.pay-badge.upi{background:rgba(95,37,159,.25);color:#C39BD3;border:1px solid rgba(95,37,159,.3)}
+.pay-badge.cash{background:rgba(27,122,74,.2);color:#82E0AA;border:1px solid rgba(27,122,74,.25)}
+
+/* WhatsApp CTA */
 .wa-cta{width:100%;display:flex;align-items:center;justify-content:center;gap:.75rem;padding:1.1rem;border-radius:var(--r);border:none;cursor:pointer;background:linear-gradient(135deg,#128C7E,var(--wa));color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;box-shadow:0 8px 32px rgba(37,211,102,.3);transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;position:relative;overflow:hidden}
 .wa-cta::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-20deg);animation:shine 3s 2s ease-in-out infinite}
 @keyframes shine{0%{left:-100%}100%{left:200%}}
 .wa-cta:hover{transform:scale(1.02) translateY(-2px);box-shadow:0 12px 44px rgba(37,211,102,.45)}
-.wa-cta:active{transform:scale(.98)}
 .wa-icon-wrap{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:1.2rem;flex-shrink:0}
-.wa-note{text-align:center;font-size:.68rem;color:rgba(255,249,245,.3);margin-top:.65rem;letter-spacing:.04em}
+.wa-note{text-align:center;font-size:.68rem;color:rgba(255,249,245,.3);margin-top:.6rem}
 
-/* TOAST */
+/* ══════════════════════════════════════════════
+   QR CODE MODAL
+══════════════════════════════════════════════ */
+.qr-modal{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}
+.qr-modal.open{opacity:1;pointer-events:all}
+.qr-card{background:linear-gradient(160deg,#1E0D04,#0D0500);border:1px solid rgba(255,107,53,.25);border-radius:var(--r);padding:2rem 1.5rem;text-align:center;max-width:360px;width:100%;animation:qr-pop .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes qr-pop{from{transform:scale(.85) translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.qr-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.qr-sub{font-size:.8rem;color:rgba(255,249,245,.4);margin-bottom:1.5rem}
+.qr-amount{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--gold);margin-bottom:1.5rem}
+.qr-box{background:#fff;border-radius:16px;padding:1rem;width:200px;height:200px;margin:0 auto 1.2rem;display:grid;place-items:center;position:relative}
+.qr-img{width:100%;height:100%;object-fit:contain}
+.qr-placeholder{width:100%;height:100%;display:grid;place-items:center}
+.qr-upi-id{font-size:.78rem;color:rgba(255,249,245,.4);margin-bottom:1.25rem}
+.qr-upi-id strong{color:var(--gold);font-size:.9rem;display:block;margin-top:.2rem}
+.qr-instructions{background:rgba(95,37,159,.15);border:1px solid rgba(95,37,159,.25);border-radius:var(--r-sm);padding:.75rem 1rem;text-align:left;margin-bottom:1.2rem}
+.qr-step{display:flex;gap:.6rem;align-items:flex-start;font-size:.78rem;color:rgba(255,249,245,.6);margin-bottom:.35rem;line-height:1.4}
+.qr-step:last-child{margin-bottom:0}
+.qr-step-num{width:18px;height:18px;border-radius:50%;background:rgba(95,37,159,.4);display:grid;place-items:center;font-size:.65rem;font-weight:700;flex-shrink:0;color:#C39BD3}
+.qr-done-btn{width:100%;padding:.9rem;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--leaf),#27AE60);border:none;color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;margin-bottom:.6rem;transition:transform .2s}
+.qr-done-btn:hover{transform:scale(1.02)}
+.qr-close{background:none;border:none;color:rgba(255,249,245,.35);font-family:'Outfit',sans-serif;font-size:.8rem;cursor:pointer;width:100%;text-align:center}
+
+/* ── TOAST ── */
 .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%) translateY(-80px) scale(.9);background:rgba(13,5,0,.95);color:#fff;border:1px solid rgba(255,107,53,.25);border-radius:999px;padding:.55rem 1.4rem;font-size:.82rem;font-weight:500;white-space:nowrap;z-index:999;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.3);transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;display:flex;align-items:center;gap:.5rem}
 .toast.show{transform:translateX(-50%) translateY(0) scale(1);opacity:1}
 
-/* SKELETON */
+/* ── SKELETONS ── */
 .skel-wrap{display:grid;grid-template-columns:1fr;gap:1rem}
 @media(min-width:600px){.skel-wrap{grid-template-columns:1fr 1fr}}
 .skel{height:260px;border-radius:var(--r);background:linear-gradient(110deg,rgba(255,255,255,.04) 25%,rgba(255,107,53,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:shimmer 1.6s infinite}
 @keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
-
-/* RIPPLE */
-@keyframes ripple-out{0%{transform:scale(.5);opacity:.8}100%{transform:scale(3.5);opacity:0}}
-.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.3);pointer-events:none;animation:ripple-out .6s ease-out forwards}
 </style>
 </head>
 <body>
@@ -232,9 +308,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
   <div class="mandala"></div>
   <div class="hero-eyebrow"><span class="dot-pulse"></span>Open &amp; Taking Orders</div>
   <h1>Spice<span class="line-fire">Garden</span></h1>
@@ -272,7 +346,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
   </button>
 </div>
 
-<!-- OVERLAY & SHEET -->
+<!-- CART SHEET -->
 <div class="overlay" id="overlay"></div>
 <div class="sheet" id="sheet">
   <div class="sheet-drag" id="sheetDrag"></div>
@@ -284,12 +358,250 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
     <div class="empty-state"><div class="empty-icon">🍽️</div><p class="empty-text">Add something delicious!</p></div>
   </div>
   <div class="sheet-foot">
-    <div class="total-row"><span class="total-label">Total Amount</span><span class="total-val" id="totalVal">₹0</span></div>
-    <button class="wa-cta" id="waBtn">
-      <div class="wa-icon-wrap">💬</div>
-      Order via WhatsApp — Zero Commission
+    <div class="total-row">
+      <span class="total-label">Total Amount</span>
+      <span class="total-val" id="totalVal">₹0</span>
+    </div>
+    <button class="proceed-btn" id="proceedBtn">
+      Continue to Order Details →
     </button>
-    <p class="wa-note">💸 No platform fees &nbsp;•&nbsp; Direct to restaurant &nbsp;•&nbsp; Instant confirmation</p>
+  </div>
+</div>
+
+<!-- ══ CUSTOMER DETAILS MODAL ══ -->
+<div class="modal-overlay" id="detailsOverlay">
+  <div class="modal" id="detailsModal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Your Details</div>
+      <div class="modal-sub" id="modalSub">So the restaurant knows who's ordering</div>
+    </div>
+    <div class="modal-body">
+
+      <!-- Progress -->
+      <div class="progress-steps">
+        <div class="prog-step">
+          <div class="prog-dot active" id="dot1">1</div>
+          <div class="prog-label active" id="lbl1">Details</div>
+        </div>
+        <div class="prog-line" id="line1"></div>
+        <div class="prog-step">
+          <div class="prog-dot" id="dot2">2</div>
+          <div class="prog-label" id="lbl2">Pickup</div>
+        </div>
+        <div class="prog-line" id="line2"></div>
+        <div class="prog-step">
+          <div class="prog-dot" id="dot3">3</div>
+          <div class="prog-label" id="lbl3">Payment</div>
+        </div>
+        <div class="prog-line" id="line3"></div>
+        <div class="prog-step">
+          <div class="prog-dot" id="dot4">4</div>
+          <div class="prog-label" id="lbl4">Review</div>
+        </div>
+      </div>
+
+      <!-- STEP 1: Personal Details -->
+      <div id="step1">
+        <div class="form-section">
+          <label class="form-label">Your Full Name *</label>
+          <input class="form-input" id="custName" type="text" placeholder="e.g. Rahul Sharma" autocomplete="name"/>
+        </div>
+        <div class="form-section">
+          <label class="form-label">WhatsApp / Phone Number *</label>
+          <input class="form-input" id="custPhone" type="tel" placeholder="e.g. 9876543210" autocomplete="tel" maxlength="10"/>
+        </div>
+        <div class="form-section">
+          <label class="form-label">Number of Persons</label>
+          <div class="time-chips" style="grid-template-columns:repeat(4,1fr)">
+            <div class="time-chip" onclick="selectPersons(this,'1')"><div class="chip-time">1</div><div class="chip-label">Person</div></div>
+            <div class="time-chip" onclick="selectPersons(this,'2')"><div class="chip-time">2</div><div class="chip-label">Persons</div></div>
+            <div class="time-chip" onclick="selectPersons(this,'3')"><div class="chip-time">3</div><div class="chip-label">Persons</div></div>
+            <div class="time-chip custom-chip" onclick="this.querySelector('input').focus()"><input type="number" id="personCustom" placeholder="4+" min="1" max="50" oninput="selectPersonsCustom(this.value)"/><div class="chip-label">Custom</div></div>
+          </div>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="closeDetailsModal()">Cancel</button>
+          <button class="btn-next" onclick="goStep(2)">Next: Pickup Time →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Pickup Time -->
+      <div id="step2" style="display:none">
+        <div class="form-section">
+          <label class="form-label">When will you pick up? *</label>
+          <div class="time-chips">
+            <div class="time-chip" onclick="selectTime(this,'10 minutes')"><div class="chip-time">10 min</div><div class="chip-label">Very soon</div></div>
+            <div class="time-chip" onclick="selectTime(this,'15 minutes')"><div class="chip-time">15 min</div><div class="chip-label">Shortly</div></div>
+            <div class="time-chip" onclick="selectTime(this,'20 minutes')"><div class="chip-time">20 min</div><div class="chip-label">Standard</div></div>
+            <div class="time-chip" onclick="selectTime(this,'30 minutes')"><div class="chip-time">30 min</div><div class="chip-label">No rush</div></div>
+            <div class="time-chip" onclick="selectTime(this,'45 minutes')"><div class="chip-time">45 min</div><div class="chip-label">Later</div></div>
+            <div class="time-chip custom-chip" onclick="this.querySelector('input').focus()"><input type="number" id="timeCustom" placeholder="? min" min="5" max="120" oninput="selectTimeCustom(this.value)"/><div class="chip-label">Custom</div></div>
+          </div>
+        </div>
+        <div class="form-section">
+          <label class="form-label">Special Instructions (optional)</label>
+          <textarea class="notes-field" id="custNotes" placeholder="e.g. Less spicy, extra napkins, allergy info…"></textarea>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goStep(1)">← Back</button>
+          <button class="btn-next" onclick="goStep(3)">Next: Payment →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Payment -->
+      <div id="step3" style="display:none">
+        <div class="form-section">
+          <label class="form-label">How will you pay? *</label>
+          <div class="pay-options">
+            <div class="pay-option upi" onclick="selectPayment('upi',this)">
+              <div class="pay-icon upi-icon">📲</div>
+              <div class="pay-details">
+                <div class="pay-name">UPI / Online Payment</div>
+                <div class="pay-desc">GPay, PhonePe, Paytm — scan QR at pickup</div>
+              </div>
+              <div class="pay-radio"></div>
+            </div>
+            <div class="pay-option cash" onclick="selectPayment('cash',this)">
+              <div class="pay-icon cash-icon">💵</div>
+              <div class="pay-details">
+                <div class="pay-name">Pay with Cash</div>
+                <div class="pay-desc">Pay when you collect your order</div>
+              </div>
+              <div class="pay-radio"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPI QR preview (shows when UPI selected) -->
+        <div id="upiPreview" style="display:none">
+          <div class="order-summary-box" style="text-align:center;padding:1.25rem">
+            <div style="font-size:.72rem;color:rgba(255,249,245,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">A QR code will be sent via WhatsApp</div>
+            <div style="font-size:2rem;margin:.5rem 0">📲</div>
+            <div style="font-size:.85rem;color:rgba(255,249,245,.6)">After placing your order, you'll receive a WhatsApp message with the payment QR code. Scan and pay before pickup.</div>
+          </div>
+        </div>
+
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goStep(2)">← Back</button>
+          <button class="btn-next" onclick="goStep(4)">Review Order →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Review & Confirm -->
+      <div id="step4" style="display:none">
+        <div class="order-summary-box">
+          <div class="summary-row"><span class="summary-key">Customer</span><span class="summary-val" id="rev-name">—</span></div>
+          <div class="summary-row"><span class="summary-key">Phone</span><span class="summary-val" id="rev-phone">—</span></div>
+          <div class="summary-row"><span class="summary-key">Persons</span><span class="summary-val" id="rev-persons">—</span></div>
+          <div class="summary-row"><span class="summary-key">Pickup in</span><span class="summary-val" id="rev-time">—</span></div>
+          <div class="summary-row"><span class="summary-key">Payment</span><span class="summary-val" id="rev-payment">—</span></div>
+          <div class="summary-row" id="rev-notes-row" style="display:none"><span class="summary-key">Notes</span><span class="summary-val" id="rev-notes">—</span></div>
+        </div>
+
+        <div style="font-size:.75rem;color:rgba(255,249,245,.35);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Order Items</div>
+        <div class="items-summary" id="revItems"></div>
+
+        <div class="summary-total-row">
+          <span class="summary-total-key">Total</span>
+          <span class="summary-total-val" id="rev-total">₹0</span>
+        </div>
+
+        <button class="wa-cta" id="waBtn" style="margin-top:1rem">
+          <div class="wa-icon-wrap">💬</div>
+          Place Order via WhatsApp
+        </button>
+        <p class="wa-note">Opens WhatsApp &nbsp;•&nbsp; Zero commission &nbsp;•&nbsp; Direct to restaurant</p>
+
+        <div class="modal-nav" style="margin-top:.8rem">
+          <button class="btn-back" onclick="goStep(3)">← Edit</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- QR CODE MODAL -->
+<div class="qr-modal" id="qrModal">
+  <div class="qr-card">
+    <div class="qr-title">💜 Scan to Pay</div>
+    <div class="qr-sub">Pay before picking up your order</div>
+    <div class="qr-amount" id="qrAmount">₹0</div>
+    <div class="qr-box">
+      <!-- Real QR or placeholder SVG -->
+      <div class="qr-placeholder">
+        <svg viewBox="0 0 120 120" width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="120" fill="white"/>
+          <!-- QR placeholder pattern -->
+          <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="3"/>
+          <rect x="15" y="15" width="20" height="20" fill="#000"/>
+          <rect x="80" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="3"/>
+          <rect x="85" y="15" width="20" height="20" fill="#000"/>
+          <rect x="10" y="80" width="30" height="30" fill="none" stroke="#000" stroke-width="3"/>
+          <rect x="15" y="85" width="20" height="20" fill="#000"/>
+          <rect x="50" y="10" width="6" height="6" fill="#000"/>
+          <rect x="58" y="10" width="6" height="6" fill="#000"/>
+          <rect x="66" y="10" width="6" height="6" fill="#000"/>
+          <rect x="50" y="18" width="6" height="6" fill="#000"/>
+          <rect x="66" y="18" width="6" height="6" fill="#000"/>
+          <rect x="50" y="26" width="6" height="6" fill="#000"/>
+          <rect x="58" y="26" width="6" height="6" fill="#000"/>
+          <rect x="66" y="26" width="6" height="6" fill="#000"/>
+          <rect x="80" y="50" width="6" height="6" fill="#000"/>
+          <rect x="88" y="50" width="6" height="6" fill="#000"/>
+          <rect x="96" y="50" width="6" height="6" fill="#000"/>
+          <rect x="104" y="50" width="6" height="6" fill="#000"/>
+          <rect x="10" y="50" width="6" height="6" fill="#000"/>
+          <rect x="18" y="50" width="6" height="6" fill="#000"/>
+          <rect x="26" y="50" width="6" height="6" fill="#000"/>
+          <rect x="34" y="50" width="6" height="6" fill="#000"/>
+          <rect x="42" y="50" width="6" height="6" fill="#000"/>
+          <rect x="50" y="50" width="6" height="6" fill="#000"/>
+          <rect x="58" y="50" width="6" height="6" fill="#000"/>
+          <rect x="66" y="50" width="6" height="6" fill="#000"/>
+          <rect x="50" y="58" width="6" height="6" fill="#000"/>
+          <rect x="58" y="58" width="6" height="6" fill="#000"/>
+          <rect x="80" y="58" width="6" height="6" fill="#000"/>
+          <rect x="96" y="58" width="6" height="6" fill="#000"/>
+          <rect x="50" y="66" width="6" height="6" fill="#000"/>
+          <rect x="58" y="66" width="6" height="6" fill="#000"/>
+          <rect x="66" y="66" width="6" height="6" fill="#000"/>
+          <rect x="80" y="66" width="6" height="6" fill="#000"/>
+          <rect x="88" y="66" width="6" height="6" fill="#000"/>
+          <rect x="104" y="66" width="6" height="6" fill="#000"/>
+          <rect x="50" y="80" width="6" height="6" fill="#000"/>
+          <rect x="66" y="80" width="6" height="6" fill="#000"/>
+          <rect x="74" y="80" width="6" height="6" fill="#000"/>
+          <rect x="82" y="80" width="6" height="6" fill="#000"/>
+          <rect x="96" y="80" width="6" height="6" fill="#000"/>
+          <rect x="50" y="88" width="6" height="6" fill="#000"/>
+          <rect x="58" y="88" width="6" height="6" fill="#000"/>
+          <rect x="74" y="88" width="6" height="6" fill="#000"/>
+          <rect x="88" y="88" width="6" height="6" fill="#000"/>
+          <rect x="104" y="88" width="6" height="6" fill="#000"/>
+          <rect x="50" y="96" width="6" height="6" fill="#000"/>
+          <rect x="66" y="96" width="6" height="6" fill="#000"/>
+          <rect x="80" y="96" width="6" height="6" fill="#000"/>
+          <rect x="96" y="96" width="6" height="6" fill="#000"/>
+          <rect x="104" y="96" width="6" height="6" fill="#000"/>
+          <!-- Spice Garden logo center -->
+          <rect x="52" y="52" width="16" height="16" rx="3" fill="#FF4500"/>
+          <text x="60" y="63" text-anchor="middle" font-size="8" fill="white" font-weight="bold">SG</text>
+        </svg>
+      </div>
+    </div>
+    <div class="qr-upi-id">
+      UPI ID: <strong id="qrUpiId">spicegarden@upi</strong>
+    </div>
+    <div class="qr-instructions">
+      <div class="qr-step"><div class="qr-step-num">1</div>Open GPay, PhonePe, or Paytm</div>
+      <div class="qr-step"><div class="qr-step-num">2</div>Scan this QR code</div>
+      <div class="qr-step"><div class="qr-step-num">3</div>Pay the exact amount shown above</div>
+      <div class="qr-step"><div class="qr-step-num">4</div>Show payment confirmation at pickup</div>
+    </div>
+    <button class="qr-done-btn" onclick="closeQR()">✓ I've Paid — Place Order on WhatsApp</button>
+    <button class="qr-close" onclick="closeQR()">Skip QR — Pay at counter</button>
   </div>
 </div>
 
@@ -297,7 +609,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
 <div class="toast" id="toast">✨ <span id="toastMsg"></span></div>
 
 <script>
-/* PARTICLE SYSTEM */
+/* ════ PARTICLES ════ */
 (function(){
   const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
   let W,H,pts=[];
@@ -306,36 +618,25 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--cream);mi
   for(let i=0;i<55;i++)pts.push({x:Math.random()*1200,y:Math.random()*900,r:Math.random()*1.8+.3,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,alpha:Math.random()*.35+.05,hue:Math.random()*30+10});
   function draw(){
     ctx.clearRect(0,0,W,H);
-    pts.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`hsla(${p.hue},100%,65%,${p.alpha})`;ctx.fill();
-    });
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`hsla(${p.hue},100%,65%,${p.alpha})`;ctx.fill()});
     requestAnimationFrame(draw);
   }
   draw();
 })();
 
-/* FLOATING EMOJIS */
+/* ════ FLOATING EMOJIS ════ */
 (function(){
   const emojis=['🌶️','🍛','🫓','🍮','🥘','🧅','🌿','🫚','⭐','✨','🔥','🎇'];
-  function spawn(){
-    const el=document.createElement('div');el.className='floater';
-    el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-    el.style.left=Math.random()*100+'vw';el.style.bottom='-60px';
-    el.style.fontSize=(1.2+Math.random()*1.4)+'rem';
-    const dur=8+Math.random()*10;el.style.animationDuration=dur+'s';
-    document.querySelector('.hero').appendChild(el);
-    setTimeout(()=>el.remove(),dur*1000+500);
-  }
+  function spawn(){const el=document.createElement('div');el.className='floater';el.textContent=emojis[Math.floor(Math.random()*emojis.length)];el.style.left=Math.random()*100+'vw';el.style.bottom='-60px';el.style.fontSize=(1.2+Math.random()*1.4)+'rem';const dur=8+Math.random()*10;el.style.animationDuration=dur+'s';document.querySelector('.hero').appendChild(el);setTimeout(()=>el.remove(),dur*1000+500)}
   setInterval(spawn,1200);
 })();
 
-/* STATE */
-const API='restaurant-order-whatsapp-integration-production.up.railway.app',RID=1;
+/* ════ STATE ════ */
+const API='http://localhost:8000',RID=1;
 let restaurant=null,categories=[],allItems=[],cart={},activeFilter='all';
+let currentStep=1,selectedTime='',selectedPayment='',selectedPersons='1';
 
+/* ════ DATA ════ */
 async function fetchData(){
   try{
     const[rR,cR,mR]=await Promise.all([fetch(`${API}/restaurants/${RID}`),fetch(`${API}/restaurants/${RID}/categories`),fetch(`${API}/restaurants/${RID}/menu`)]);
@@ -344,27 +645,23 @@ async function fetchData(){
 }
 
 function useDemoData(){
-  restaurant={name:'Spice Garden',whatsapp_number:'919660920036',currency:'₹'};
+  restaurant={name:'Spice Garden',whatsapp_number:'919660920036',currency:'₹',upi_id:'spicegarden@upi'};
   categories=[{id:1,name:'Starters',emoji:'🔥'},{id:2,name:'Biryani',emoji:'🍛'},{id:3,name:'Curries',emoji:'🥘'},{id:4,name:'Breads',emoji:'🫓'},{id:5,name:'Desserts',emoji:'🍮'},{id:6,name:'Drinks',emoji:'🥤'}];
   allItems=[
-    {id:1,category_id:1,name:'Paneer Tikka',price:249,is_veg:true,is_bestseller:true,spice_level:2,description:'Soft cottage cheese cubes marinated in yogurt and spices, grilled to perfection in the tandoor.',image_url:'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600'},
-    {id:2,category_id:1,name:'Chicken 65',price:299,is_veg:false,is_bestseller:true,spice_level:3,description:'Crispy deep-fried chicken with a tangy, fiery south Indian marinade and curry leaves.',image_url:'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=600'},
-    {id:3,category_id:1,name:'Veg Seekh Kebab',price:199,is_veg:true,is_bestseller:false,spice_level:1,description:'Minced vegetables and paneer blended with aromatic herbs, skewered and flame-grilled.',image_url:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600'},
-    {id:4,category_id:1,name:'Fish Amritsari',price:349,is_veg:false,is_bestseller:false,spice_level:2,description:'Golden fried fish fillets in the iconic Amritsari spiced batter.',image_url:'https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=600'},
-    {id:5,category_id:2,name:'Hyderabadi Dum Biryani',price:349,is_veg:false,is_bestseller:true,spice_level:2,description:'Slow-cooked basmati rice layered with tender mutton in authentic dum style.',image_url:'https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600'},
-    {id:6,category_id:2,name:'Veg Dum Biryani',price:249,is_veg:true,is_bestseller:false,spice_level:1,description:'Fragrant basmati with seasonal vegetables and whole spices, sealed and dum-cooked.',image_url:'https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=600'},
-    {id:7,category_id:2,name:'Chicken Biryani',price:319,is_veg:false,is_bestseller:true,spice_level:2,description:'Juicy chicken slow-cooked with basmati and aromatic spices.',image_url:'https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600'},
-    {id:8,category_id:2,name:'Prawn Biryani',price:399,is_veg:false,is_bestseller:false,spice_level:3,description:'Succulent prawns in coastal masala, layered with saffron-kissed basmati.',image_url:'https://images.unsplash.com/photo-1590502160462-58b41354f588?w=600'},
-    {id:9,category_id:3,name:'Butter Chicken',price:329,is_veg:false,is_bestseller:true,spice_level:1,description:'Tender chicken in a silky, creamy tomato-butter sauce with kasuri methi.',image_url:'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600'},
-    {id:10,category_id:3,name:'Dal Makhani',price:229,is_veg:true,is_bestseller:true,spice_level:1,description:'Slow-simmered black lentils in a velvety tomato-cream gravy.',image_url:'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600'},
-    {id:11,category_id:3,name:'Palak Paneer',price:259,is_veg:true,is_bestseller:false,spice_level:1,description:'Cottage cheese in a smooth, vibrant spinach gravy with whole spices.',image_url:'https://images.unsplash.com/photo-1589647363585-f4a7d3877b10?w=600'},
-    {id:12,category_id:3,name:'Lamb Rogan Josh',price:379,is_veg:false,is_bestseller:false,spice_level:3,description:'Kashmiri slow-braised lamb in a bold red gravy with whole spices.',image_url:'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=600'},
-    {id:13,category_id:4,name:'Garlic Naan',price:79,is_veg:true,is_bestseller:true,spice_level:0,description:'Pillowy tandoor bread brushed with garlic butter and fresh coriander.',image_url:'https://images.unsplash.com/photo-1584736286279-5d85e31f2ea4?w=600'},
-    {id:14,category_id:4,name:'Laccha Paratha',price:69,is_veg:true,is_bestseller:false,spice_level:0,description:'Flaky, multi-layered whole wheat flatbread from the tawa.',image_url:'https://images.unsplash.com/photo-1607532941433-304659e8198a?w=600'},
-    {id:15,category_id:5,name:'Gulab Jamun',price:99,is_veg:true,is_bestseller:true,spice_level:0,description:'Soft milk-solid dumplings soaked in rose and cardamom sugar syrup.',image_url:'https://images.unsplash.com/photo-1601303516534-bf5d69b0d96d?w=600'},
-    {id:16,category_id:5,name:'Kulfi Falooda',price:149,is_veg:true,is_bestseller:true,spice_level:0,description:'Creamy traditional kulfi with vermicelli, basil seeds and rose syrup.',image_url:'https://images.unsplash.com/photo-1567337710282-00832b415979?w=600'},
-    {id:17,category_id:6,name:'Mango Lassi',price:99,is_veg:true,is_bestseller:true,spice_level:0,description:'Thick yogurt blended with sweet Alphonso mango pulp.',image_url:'https://images.unsplash.com/photo-1571167530149-c1105da4c2f4?w=600'},
-    {id:18,category_id:6,name:'Virgin Mojito',price:119,is_veg:true,is_bestseller:false,spice_level:0,description:'Fresh lime, crushed mint and soda over cracked ice.',image_url:'https://images.unsplash.com/photo-1574090945491-e13cb157bdf6?w=600'},
+    {id:1,category_id:1,name:'Paneer Tikka',price:249,is_veg:true,is_bestseller:true,spice_level:2,description:'Soft cottage cheese cubes marinated in yogurt and spices, grilled to perfection.',image_url:'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600'},
+    {id:2,category_id:1,name:'Chicken 65',price:299,is_veg:false,is_bestseller:true,spice_level:3,description:'Crispy deep-fried chicken with a tangy, fiery south Indian marinade.',image_url:'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=600'},
+    {id:3,category_id:1,name:'Veg Seekh Kebab',price:199,is_veg:true,is_bestseller:false,spice_level:1,description:'Minced vegetables and paneer blended with herbs, skewered and grilled.',image_url:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600'},
+    {id:4,category_id:2,name:'Hyderabadi Dum Biryani',price:349,is_veg:false,is_bestseller:true,spice_level:2,description:'Slow-cooked basmati layered with tender mutton in authentic dum style.',image_url:'https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600'},
+    {id:5,category_id:2,name:'Veg Dum Biryani',price:249,is_veg:true,is_bestseller:false,spice_level:1,description:'Fragrant basmati with seasonal vegetables and whole spices.',image_url:'https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=600'},
+    {id:6,category_id:2,name:'Chicken Biryani',price:319,is_veg:false,is_bestseller:true,spice_level:2,description:'Juicy chicken slow-cooked with basmati and aromatic spices.',image_url:'https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600'},
+    {id:7,category_id:3,name:'Butter Chicken',price:329,is_veg:false,is_bestseller:true,spice_level:1,description:'Tender chicken in a silky, creamy tomato-butter sauce.',image_url:'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600'},
+    {id:8,category_id:3,name:'Dal Makhani',price:229,is_veg:true,is_bestseller:true,spice_level:1,description:'Slow-simmered black lentils in a velvety tomato-cream gravy.',image_url:'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600'},
+    {id:9,category_id:3,name:'Palak Paneer',price:259,is_veg:true,is_bestseller:false,spice_level:1,description:'Cottage cheese in a smooth spinach gravy with whole spices.',image_url:'https://images.unsplash.com/photo-1589647363585-f4a7d3877b10?w=600'},
+    {id:10,category_id:4,name:'Garlic Naan',price:79,is_veg:true,is_bestseller:true,spice_level:0,description:'Pillowy tandoor bread with garlic butter and coriander.',image_url:'https://images.unsplash.com/photo-1584736286279-5d85e31f2ea4?w=600'},
+    {id:11,category_id:5,name:'Gulab Jamun',price:99,is_veg:true,is_bestseller:true,spice_level:0,description:'Soft milk-solid dumplings soaked in rose and cardamom syrup.',image_url:'https://images.unsplash.com/photo-1601303516534-bf5d69b0d96d?w=600'},
+    {id:12,category_id:5,name:'Kulfi Falooda',price:149,is_veg:true,is_bestseller:true,spice_level:0,description:'Traditional kulfi with vermicelli, basil seeds and rose syrup.',image_url:'https://images.unsplash.com/photo-1567337710282-00832b415979?w=600'},
+    {id:13,category_id:6,name:'Mango Lassi',price:99,is_veg:true,is_bestseller:true,spice_level:0,description:'Thick yogurt blended with sweet Alphonso mango pulp.',image_url:'https://images.unsplash.com/photo-1571167530149-c1105da4c2f4?w=600'},
+    {id:14,category_id:6,name:'Virgin Mojito',price:119,is_veg:true,is_bestseller:false,spice_level:0,description:'Fresh lime, crushed mint and soda over cracked ice.',image_url:'https://images.unsplash.com/photo-1574090945491-e13cb157bdf6?w=600'},
   ];
   boot();
 }
@@ -376,6 +673,7 @@ function boot(){
   document.getElementById('skeletons').style.display='none';
 }
 
+/* ════ CATEGORY NAV ════ */
 function buildCatNav(){
   const nav=document.getElementById('catNav');nav.innerHTML='';
   const all=document.createElement('button');all.className='cat-pill active';all.dataset.cat='all';all.innerHTML='<span>🍽️ All</span>';nav.appendChild(all);
@@ -389,6 +687,7 @@ function buildCatNav(){
   });
 }
 
+/* ════ RENDER MENU ════ */
 function renderMenu(items){
   const wrap=document.getElementById('menuWrap');wrap.innerHTML='';
   const grouped={};categories.forEach(c=>{grouped[c.id]=[]});
@@ -440,7 +739,7 @@ function makeCard(item,delayMs){
   return el;
 }
 
-/* CART */
+/* ════ CART LOGIC ════ */
 document.getElementById('menuWrap').addEventListener('click',e=>{
   const btn=e.target.closest('[data-id]');if(!btn||btn.tagName!=='BUTTON')return;
   const id=parseInt(btn.dataset.id),item=allItems.find(i=>i.id===id);if(!item)return;
@@ -493,7 +792,7 @@ document.getElementById('sheetBody').addEventListener('click',e=>{
   if(card){const nc=makeCard(item,0);nc.style.animationDelay='0ms';card.replaceWith(nc)}
 });
 
-/* SHEET */
+/* ════ CART SHEET OPEN/CLOSE ════ */
 const sheet=document.getElementById('sheet'),overlay=document.getElementById('overlay');
 function openSheet(){sheet.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden'}
 function closeSheet(){sheet.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow=''}
@@ -505,27 +804,184 @@ let startY=0;
 sheet.addEventListener('touchstart',e=>{startY=e.touches[0].clientY},{passive:true});
 sheet.addEventListener('touchend',e=>{if(e.changedTouches[0].clientY-startY>80)closeSheet()},{passive:true});
 
-/* WHATSAPP */
-document.getElementById('waBtn').addEventListener('click',()=>{
+document.getElementById('proceedBtn').addEventListener('click',()=>{
   if(!cartCount())return;
-  const phone=restaurant?.whatsapp_number||'91966020036';
-  const lines=Object.values(cart).map(({item,qty})=>`▪ ${item.name} × ${qty}  —  ₹${(item.price*qty).toLocaleString('en-IN')}`);
-  const msg=[`🌶️ *New Order — ${restaurant?.name||'Spice Garden'}*`,``,...lines,``,`━━━━━━━━━━━━━━━━━━━━`,`💰 *Total: ₹${cartTotal().toLocaleString('en-IN')}*`,``,`📱 _Ordered via online menu_  ✅`].join('\n');
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank');
-  showToast('Opening WhatsApp 🎉');closeSheet();
+  closeSheet();
+  openDetailsModal();
 });
 
+/* ════ CUSTOMER DETAILS MODAL ════ */
+function openDetailsModal(){
+  currentStep=1;selectedTime='';selectedPayment='';selectedPersons='1';
+  renderStep(1);
+  document.getElementById('detailsOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDetailsModal(){
+  document.getElementById('detailsOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function renderStep(n){
+  currentStep=n;
+  [1,2,3,4].forEach(i=>{
+    document.getElementById('step'+i).style.display=i===n?'block':'none';
+    const dot=document.getElementById('dot'+i),lbl=document.getElementById('lbl'+i);
+    dot.className='prog-dot'+(i<n?' done':i===n?' active':'');
+    lbl.className='prog-label'+(i===n?' active':'');
+    if(i<4){const line=document.getElementById('line'+i);line.className='prog-line'+(i<n?' done':'')}
+  });
+  const titles=['Your Details','Pickup Time','Payment Method','Review & Confirm'];
+  const subs=['So the restaurant knows who\'s ordering','When will you collect your order?','How would you like to pay?','Everything looks good? Place your order!'];
+  document.getElementById('modalTitle').textContent=titles[n-1];
+  document.getElementById('modalSub').textContent=subs[n-1];
+  if(n===4)fillReview();
+  document.getElementById('detailsModal').scrollTop=0;
+}
+
+function goStep(n){
+  if(n===2){
+    const name=document.getElementById('custName').value.trim();
+    const phone=document.getElementById('custPhone').value.trim();
+    if(!name){document.getElementById('custName').classList.add('error');setTimeout(()=>document.getElementById('custName').classList.remove('error'),500);showToast('Please enter your name');return}
+    if(!phone||phone.length<10){document.getElementById('custPhone').classList.add('error');setTimeout(()=>document.getElementById('custPhone').classList.remove('error'),500);showToast('Please enter a valid phone number');return}
+  }
+  if(n===3&&!selectedTime){showToast('Please select a pickup time ⏰');return}
+  if(n===4&&!selectedPayment){showToast('Please select a payment method 💳');return}
+  renderStep(n);
+}
+
+/* ════ SELECTION HELPERS ════ */
+function selectTime(el,val){
+  document.querySelectorAll('#step2 .time-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');selectedTime=val;
+}
+function selectTimeCustom(val){
+  if(!val)return;
+  document.querySelectorAll('#step2 .time-chip').forEach(c=>c.classList.remove('selected'));
+  document.querySelector('#step2 .custom-chip').classList.add('selected');
+  selectedTime=val+' minutes';
+}
+function selectPersons(el,val){
+  document.querySelectorAll('#step1 .time-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');selectedPersons=val;
+}
+function selectPersonsCustom(val){
+  if(!val)return;
+  document.querySelectorAll('#step1 .time-chip').forEach(c=>c.classList.remove('selected'));
+  document.querySelector('#step1 .custom-chip').classList.add('selected');
+  selectedPersons=val;
+}
+function selectPayment(type,el){
+  document.querySelectorAll('.pay-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');selectedPayment=type;
+  document.getElementById('upiPreview').style.display=type==='upi'?'block':'none';
+}
+
+/* ════ REVIEW STEP ════ */
+function fillReview(){
+  const name=document.getElementById('custName').value.trim();
+  const phone=document.getElementById('custPhone').value.trim();
+  const notes=document.getElementById('custNotes').value.trim();
+  document.getElementById('rev-name').textContent=name;
+  document.getElementById('rev-phone').textContent='+91 '+phone;
+  document.getElementById('rev-persons').textContent=selectedPersons+' person'+(selectedPersons>1?'s':'');
+  document.getElementById('rev-time').textContent=selectedTime;
+  document.getElementById('rev-payment').innerHTML=selectedPayment==='upi'
+    ?'<span class="pay-badge upi">📲 UPI / Online</span>'
+    :'<span class="pay-badge cash">💵 Cash</span>';
+  if(notes){document.getElementById('rev-notes-row').style.display='flex';document.getElementById('rev-notes').textContent=notes}
+  else document.getElementById('rev-notes-row').style.display='none';
+  document.getElementById('rev-total').textContent=`₹${cartTotal().toLocaleString('en-IN')}`;
+  document.getElementById('revItems').innerHTML=Object.values(cart).map(({item,qty})=>`
+    <div class="item-summary-row">
+      <span style="color:rgba(255,249,245,.7)">${item.name} <span style="color:rgba(255,249,245,.35)">×${qty}</span></span>
+      <span style="color:var(--gold);font-weight:600">₹${(item.price*qty).toLocaleString('en-IN')}</span>
+    </div>`).join('');
+}
+
+/* ════ WHATSAPP + QR FLOW ════ */
+document.getElementById('waBtn').addEventListener('click',()=>{
+  const name=document.getElementById('custName').value.trim();
+  const phone=document.getElementById('custPhone').value.trim();
+  const notes=document.getElementById('custNotes').value.trim();
+  const restaurantPhone=restaurant?.whatsapp_number||'919660920036';
+  const restName=restaurant?.name||'Spice Garden';
+  const items=Object.values(cart);
+  const total=cartTotal();
+  const cur='₹';
+
+  // Build WhatsApp message
+  const itemLines=items.map(({item,qty})=>`  ▪ ${item.name} × ${qty}  —  ${cur}${(item.price*qty).toLocaleString('en-IN')}`);
+  const payLine=selectedPayment==='upi'?'📲 UPI / Online (QR sent)':'💵 Cash on pickup';
+
+  const msg=[
+    `🌶️ *NEW ORDER — ${restName}*`,
+    `━━━━━━━━━━━━━━━━━━━━━━━`,
+    ``,
+    `👤 *Customer Details*`,
+    `   Name: ${name}`,
+    `   Phone: +91 ${phone}`,
+    `   Persons: ${selectedPersons}`,
+    ``,
+    `🍽️ *Order Items*`,
+    ...itemLines,
+    ``,
+    `⏰ *Pickup in:* ${selectedTime}`,
+    `💳 *Payment:* ${payLine}`,
+    ``,
+    `━━━━━━━━━━━━━━━━━━━━━━━`,
+    `💰 *TOTAL: ${cur}${total.toLocaleString('en-IN')}*`,
+    `━━━━━━━━━━━━━━━━━━━━━━━`,
+    notes?`📝 Note: ${notes}\n`:'',
+    `📱 _Ordered via Spice Garden online menu_ ✅`,
+  ].filter(l=>l!==undefined).join('\n');
+
+  if(selectedPayment==='upi'){
+    // Show QR first, then WhatsApp
+    closeDetailsModal();
+    showQR(total);
+    // Store msg for after QR
+    window._pendingWAMsg=msg;
+    window._pendingWAPhone=restaurantPhone;
+  } else {
+    // Cash: go straight to WhatsApp
+    closeDetailsModal();
+    window.open(`https://wa.me/${restaurantPhone}?text=${encodeURIComponent(msg)}`,'_blank');
+    showToast('Order sent to restaurant! 🎉');
+    cart={};refreshCart();
+  }
+});
+
+/* ════ QR MODAL ════ */
+function showQR(total){
+  document.getElementById('qrAmount').textContent=`₹${total.toLocaleString('en-IN')}`;
+  document.getElementById('qrUpiId').textContent=restaurant?.upi_id||'spicegarden@upi';
+  document.getElementById('qrModal').classList.add('open');
+}
+function closeQR(){
+  document.getElementById('qrModal').classList.remove('open');
+  // Send WhatsApp after QR
+  if(window._pendingWAMsg){
+    window.open(`https://wa.me/${window._pendingWAPhone}?text=${encodeURIComponent(window._pendingWAMsg)}`,'_blank');
+    window._pendingWAMsg=null;window._pendingWAPhone=null;
+    showToast('Order placed! Check WhatsApp 🎉');
+    cart={};refreshCart();
+  }
+}
+
+/* ════ HERO CTA ════ */
 document.getElementById('exploreCta').addEventListener('click',()=>document.getElementById('catNav').scrollIntoView({behavior:'smooth'}));
 
-/* TOAST */
+/* ════ TOAST ════ */
 let tt;
 function showToast(msg){
   document.getElementById('toastMsg').textContent=msg;
   document.getElementById('toast').classList.add('show');
-  clearTimeout(tt);tt=setTimeout(()=>document.getElementById('toast').classList.remove('show'),2000);
+  clearTimeout(tt);tt=setTimeout(()=>document.getElementById('toast').classList.remove('show'),2200);
 }
 
-/* SCROLL SPY */
+/* ════ SCROLL SPY ════ */
 const spy=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(!e.isIntersecting)return;const id=e.target.dataset.catId;document.querySelectorAll('.cat-pill').forEach(b=>b.classList.toggle('active',b.dataset.cat==id||(id===undefined&&b.dataset.cat==='all')))});
 },{rootMargin:'-35% 0px -55% 0px'});
